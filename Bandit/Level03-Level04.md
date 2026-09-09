@@ -70,12 +70,6 @@ I used `cat` followed by the exact filename:
 cat ...Hiding-From-You
 ```
 
-This gave me:
-
-```text
-xZT Xq1rDJQWVAzdv5Chq1TQytTwuAMq
-```
-
 The actual output from my terminal was:
 
 ```text
