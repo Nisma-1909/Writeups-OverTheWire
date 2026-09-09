@@ -44,21 +44,6 @@ Pk8fYLZg2hnHSz83plB1iEPKdD3QToB
 
 This was the password for the next level, `bandit2`.
 
-## Step 3 — Exiting the server
-
-After getting the password, I exited the Bandit server:
-
-```bash
-exit
-```
-
-The terminal showed:
-
-```text
-logout
-Connection to bandit.labs.overthewire.org closed.
-```
-
 ## Password
 
 ```text
