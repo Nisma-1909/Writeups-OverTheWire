@@ -4,11 +4,11 @@
 
 In this level, the password for the next level is stored in a file named `-`.
 
-I logged into the server as `bandit1` using the password I got from the previous level.
+I logged into the Bandit server as `bandit1` using the password I found in the previous level.
 
-## Step 1 — Checking the directory
+## Step 1 — Checking the files
 
-First, I checked the files in the current directory:
+After logging in, I wanted to see what was present in the current directory, so I ran:
 
 ```bash
 ls
@@ -20,23 +20,35 @@ The output was:
 -
 ```
 
-So the file was literally named `-`.
+The file was literally named `-`.
 
-## Step 2 — Reading the file
+## Step 2 — Trying to read the file
 
-Normally, I could use `cat filename` to read a file.
+At first, the filename looked a little unusual because `-` is also used by many Linux commands for special options or standard input.
 
-But here the filename is `-`.
+So instead of simply doing:
 
-The `-` character is usually interpreted by Linux commands as an option or as standard input, so I used `./` to clearly specify that it is a file in the current directory.
+```bash
+cat -
+```
 
-I ran:
+I used:
 
 ```bash
 cat ./-
 ```
 
-This gave me:
+Here, `./` tells the shell that `-` refers to a file in the current directory.
+
+## Step 3 — Getting the password
+
+After running:
+
+```bash
+cat ./-
+```
+
+I got:
 
 ```text
 Pk8fYLZg2hnHSz83plB1iEPKdD3QToB
@@ -44,7 +56,24 @@ Pk8fYLZg2hnHSz83plB1iEPKdD3QToB
 
 This was the password for the next level, `bandit2`.
 
+## Step 4 — Exiting
+
+Once I had the password, I exited the Bandit server using:
+
+```bash
+exit
+```
+
+The connection was closed:
+
+```text
+logout
+Connection to bandit.labs.overthewire.org closed.
+```
+
 ## Password
+
+The password I obtained for `bandit2` was:
 
 ```text
 Pk8fYLZg2hnHSz83plB1iEPKdD3QToB
@@ -60,11 +89,18 @@ exit
 
 ## What I Learned
 
-- A Linux file can have a name such as `-`.
-- `-` can have a special meaning when used with command-line programs.
-- Using `./` tells Linux that the name refers to a file in the current directory.
-- `cat ./-` can be used to read a file named `-`.
+The main thing I learned from this level was that filenames can sometimes look like command-line options.
+
+Since the file was named `-`, using:
+
+```bash
+cat ./-
+```
+
+made it clear that I wanted to read the file named `-` in the current directory.
+
+This was also a good reminder to pay attention to unusual filenames instead of assuming every file can be handled in the usual way.
 
 ## Result
 
-Successfully completed **Bandit Level 1 → Level 2** ✅
+**Bandit Level 1 → Level 2 completed ✅**
