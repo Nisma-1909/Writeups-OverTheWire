@@ -1,12 +1,18 @@
 # Bandit Level 0 → Level 1
 
-## Goal
+## Challenge
 
-The first level is basically about getting connected to the Bandit server using SSH.
+This is the first level of Bandit. The main goal is to get access to the Bandit server and find the password needed for the next level.
 
-## Connection
+The challenge gives the SSH login details:
 
-I used SSH with the username `bandit0` and port `2220`:
+- Username: `bandit0`
+- Host: `bandit.labs.overthewire.org`
+- Port: `2220`
+
+## Step 1 — Connecting to the server
+
+I used SSH with the given details:
 
 ```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220
