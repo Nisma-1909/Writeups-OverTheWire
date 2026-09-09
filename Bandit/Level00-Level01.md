@@ -2,17 +2,17 @@
 
 ## Challenge
 
-This is the first level of Bandit. The main goal is to get access to the Bandit server and find the password needed for the next level.
+The first Bandit level is about connecting to the OverTheWire server using SSH and finding the password for the next level.
 
-The challenge gives the SSH login details:
+The login details given were:
 
 - Username: `bandit0`
 - Host: `bandit.labs.overthewire.org`
 - Port: `2220`
 
-## Step 1 — Connecting to the server
+## Connecting to Bandit
 
-I used SSH with the given details:
+I connected to the server using:
 
 ```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220
