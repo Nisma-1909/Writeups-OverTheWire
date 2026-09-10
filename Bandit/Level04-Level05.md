@@ -1,116 +1,65 @@
-# Bandit Level 4 → Level 5
+# Bandit Level 04 → Level 05
 
 ## Challenge
 
-In this level, the password is stored in one of the files inside the `inhere` directory.
+Find the password inside one of the files in `inhere`.
 
-The tricky part is that the files have names starting with `-`.
+## Solution
 
-## Step 1 — Checking the directory
+I checked the directory:
 
-After logging in as `bandit4`, I first checked the current directory:
+`ls`
 
-```bash
-ls
-```
+Output:
 
-I got:
+`inhere`
 
-```text
-inhere
-```
+I entered it:
 
-So I entered the directory:
+`cd inhere`
 
-```bash
-cd inhere
-```
+Then I listed the files:
 
-## Step 2 — Checking the files
+`ls`
 
-Inside `inhere`, I ran:
+Output:
 
-```bash
-ls
-```
+`-file00`  
+`-file01`  
+`-file02`  
+`-file03`  
+`-file04`  
+`-file05`  
+`-file06`  
+`-file07`  
+`-file08`  
+`-file09`
 
-There were multiple files:
+The filenames started with `-`, so I used `--` before the filename:
 
-```text
--file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
-```
+`cat -- -file07`
 
-I needed to find which one contained the password.
+Output:
 
-## Step 3 — Reading the file
+`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
-I noticed that the filenames all started with `-`.
+Then I exited:
 
-A `-` can have a special meaning in Linux commands, so I used `--` before the filename.
-
-I ran:
-
-```bash
-cat -- -file07
-```
-
-The `--` tells the command that the options have ended, so `-file07` is treated as a filename instead of an option.
-
-## Step 4 — Getting the password
-
-The command returned:
-
-```text
-6C7h9GD8Mai5nr7wo1RonrzFjj9yIrG
-```
-
-This was the password for the next level, `bandit5`.
-
-## Step 5 — Exiting
-
-After getting the password, I exited the server:
-
-```bash
-exit
-```
-
-The connection was closed:
-
-```text
-logout
-Connection to bandit.labs.overthewire.org closed.
-```
-
-## Password
-
-```text
-6C7h9GD8Mai5nr7wo1RonrzFjj9yIrG
-```
+`exit`
 
 ## Commands Used
 
-```bash
-ls
-cd inhere
-ls
-cat -- -file07
-exit
-```
+`ls`  
+`cd inhere`  
+`ls`  
+`cat -- -file07`  
+`exit`
 
 ## What I Learned
 
-This level taught me how to deal with filenames that start with `-`.
-
-The `--` is useful because it tells the command that anything after it should be treated as an argument or filename, not as a command option.
-
-So:
-
-```bash
-cat -- -file07
-```
-
-allows `cat` to correctly read the file named `-file07`.
+- `--` tells the command that the following text should be treated as a filename and not an option.
+- This is useful when filenames start with `-`.
 
 ## Result
 
-**Bandit Level 4 → Level 5 completed ✅**
+Bandit Level 4 → Level 5 completed.
