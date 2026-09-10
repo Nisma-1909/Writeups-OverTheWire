@@ -1,148 +1,83 @@
-# Bandit Level 5 → Level 6
+# Bandit Level 05 → Level 06
 
 ## Challenge
 
-In this level, the password is stored somewhere inside the `inhere` directory.
+Find the file that has the required size and is not executable.
 
-There are a lot of files and directories, so instead of checking every file manually, I needed to find the file based on its properties.
+## Solution
 
-The file I was looking for was:
+I checked the directory:
 
-- Exactly **1033 bytes** in size
-- **Not executable**
+`ls`
 
-## Step 1 — Entering the directory
+Output:
 
-After logging in as `bandit5`, I checked the current directory:
+`inhere`
 
-```bash
-ls
-```
+I entered it:
 
-The output showed:
-
-```text
-inhere
-```
-
-So I entered it:
-
-```bash
-cd inhere
-```
-
-Then I listed the contents:
-
-```bash
-ls
-```
+`cd inhere`
 
 There were many directories:
 
-```text
-maybehere00  maybehere02  maybehere04  maybehere06  maybehere08  maybehere10  maybehere12  maybehere14  maybehere16  maybehere18
-maybehere01  maybehere03  maybehere05  maybehere07  maybehere09  maybehere11  maybehere13  maybehere15  maybehere17  maybehere19
-```
+`ls`
 
-There were too many files to check manually, so I decided to use `find`.
+Output:
 
-## Step 2 — Finding the correct file
+`maybehere00`  
+`maybehere01`  
+`maybehere02`  
+`...`  
+`maybehere19`
 
-I first tried:
+Instead of checking each directory manually, I used `find`.
 
-```bash
-find . -type f -size 1033c ! executable
-```
+My first command was:
 
-But I got an error:
+`find . -type f -size 1033c ! executable`
 
-```text
-find: paths must precede expression: `executable'
-```
+I got an error:
 
-So the command syntax was wrong.
+`find: paths must precede expression: 'executable'`
 
-I corrected it by adding `-` before `executable`:
+I corrected the command:
 
-```bash
-find . -type f -size 1033c ! -executable
-```
+`find . -type f -size 1033c ! -executable`
 
-This time, it worked and returned:
+Output:
 
-```text
-./maybehere07/.file2
-```
+`./maybehere07/.file2`
 
-This meant that `.file2` inside `maybehere07` matched the conditions.
+I read the file:
 
-## Step 3 — Reading the file
+`cat ./maybehere07/.file2`
 
-I used `cat` with the path returned by `find`:
+Output:
 
-```bash
-cat ./maybehere07/.file2
-```
+`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
-The output was:
+Then I exited:
 
-```text
-pXa26xhMWaC2SvDotA4r9EgZkuIOeSBW
-```
-
-This was the password for the next level, `bandit6`.
-
-## Step 4 — Exiting
-
-After getting the password, I exited the server:
-
-```bash
-exit
-```
-
-The connection was closed:
-
-```text
-logout
-Connection to bandit.labs.overthewire.org closed.
-```
-
-## Password
-
-```text
-pXa26xhMWaC2SvDotA4r9EgZkuIOeSBW
-```
+`exit`
 
 ## Commands Used
 
-```bash
-ls
-cd inhere
-ls
-find . -type f -size 1033c ! -executable
-cat ./maybehere07/.file2
-exit
-```
+`ls`  
+`cd inhere`  
+`ls`  
+`find . -type f -size 1033c ! executable`  
+`find . -type f -size 1033c ! -executable`  
+`cat ./maybehere07/.file2`  
+`exit`
 
 ## What I Learned
 
-This level introduced the `find` command in a more useful way.
-
-I used:
-
-```bash
-find . -type f -size 1033c ! -executable
-```
-
-Here:
-
-- `.` means to search from the current directory
-- `-type f` searches for regular files
-- `-size 1033c` searches for files exactly 1033 bytes in size
-- `! -executable` excludes executable files
-
-I also learned that small syntax mistakes in Linux commands can give errors, and fixing the command based on the error is an important part of troubleshooting.
+- `find` can search for files using different conditions.
+- `-type f` searches for regular files.
+- `-size 1033c` searches for a file with exactly 1033 bytes.
+- `! -executable` finds files that are not executable.
+- The error helped me fix the syntax of the command.
 
 ## Result
 
-**Bandit Level 5 → Level 6 completed ✅**
+Bandit Level 5 → Level 6 completed.
