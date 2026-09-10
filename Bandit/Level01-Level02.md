@@ -1,106 +1,44 @@
-# Bandit Level 1 → Level 2
+# Bandit Level 01 → Level 02
 
 ## Challenge
 
-In this level, the password for the next level is stored in a file named `-`.
+Find the password for Level 2.
 
-I logged into the Bandit server as `bandit1` using the password I found in the previous level.
+## Solution
 
-## Step 1 — Checking the files
+I logged in as `bandit1` and checked the directory:
 
-After logging in, I wanted to see what was present in the current directory, so I ran:
+`ls`
 
-```bash
-ls
-```
+Output:
 
-The output was:
+`-`
 
-```text
--
-```
+The filename was just `-`.
 
-The file was literally named `-`.
+I used `./` before the filename so that it would be treated as a file in the current directory:
 
-## Step 2 — Trying to read the file
+`cat ./-`
 
-At first, the filename looked a little unusual because `-` is also used by many Linux commands for special options or standard input.
+Output:
 
-So instead of simply doing:
+`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
-```bash
-cat -
-```
+Then I exited:
 
-I used:
-
-```bash
-cat ./-
-```
-
-Here, `./` tells the shell that `-` refers to a file in the current directory.
-
-## Step 3 — Getting the password
-
-After running:
-
-```bash
-cat ./-
-```
-
-I got:
-
-```text
-Pk8fYLZg2hnHSz83plB1iEPKdD3QToB
-```
-
-This was the password for the next level, `bandit2`.
-
-## Step 4 — Exiting
-
-Once I had the password, I exited the Bandit server using:
-
-```bash
-exit
-```
-
-The connection was closed:
-
-```text
-logout
-Connection to bandit.labs.overthewire.org closed.
-```
-
-## Password
-
-The password I obtained for `bandit2` was:
-
-```text
-Pk8fYLZg2hnHSz83plB1iEPKdD3QToB
-```
+`exit`
 
 ## Commands Used
 
-```bash
-ls
-cat ./-
-exit
-```
+`ls`  
+`cat ./-`  
+`exit`
 
 ## What I Learned
 
-The main thing I learned from this level was that filenames can sometimes look like command-line options.
-
-Since the file was named `-`, using:
-
-```bash
-cat ./-
-```
-
-made it clear that I wanted to read the file named `-` in the current directory.
-
-This was also a good reminder to pay attention to unusual filenames instead of assuming every file can be handled in the usual way.
+- `-` can have a special meaning in Linux commands.
+- `./` can be used to specify a file in the current directory.
 
 ## Result
 
-**Bandit Level 1 → Level 2 completed ✅**
+Bandit Level 1 → Level 2 completed.
