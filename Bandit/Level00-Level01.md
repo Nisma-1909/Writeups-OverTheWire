@@ -8,48 +8,34 @@ Login to Bandit Level 0 and find the password for Level 1.
 
 I connected to the Bandit server using SSH:
 
-```
-ssh bandit0@bandit.labs.overthewire.org -p 2220
-```
+`ssh bandit0@bandit.labs.overthewire.org -p 2220`
 
 After logging in, I checked the files:
 
-```bash
-ls
-```
+`ls`
 
 Output:
 
-```text
-readme
-```
+`readme`
 
 I read the file:
 
-```bash
-cat readme
-```
+`cat readme`
 
-The password was displayed in the file.
+The password was displayed in the file:
 
-```text
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
 Then I exited:
 
-```bash
-exit
-```
+`exit`
 
 ## Commands Used
 
-```bash
-ssh bandit0@bandit.labs.overthewire.org -p 2220
-ls
-cat readme
-exit
-```
+`ssh bandit0@bandit.labs.overthewire.org -p 2220`  
+`ls`  
+`cat readme`  
+`exit`
 
 ## What I Learned
 
