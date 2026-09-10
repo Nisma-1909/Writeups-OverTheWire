@@ -1,120 +1,58 @@
-# Bandit Level 3 → Level 4
+# Bandit Level 03 → Level 04
 
 ## Challenge
 
-In this level, the password is stored in a hidden file inside the `inhere` directory.
+Find the hidden file containing the password.
 
-I logged in as `bandit3` using the password I got from the previous level.
+## Solution
 
-## Step 1 — Checking the current directory
+I checked the directory:
 
-First, I used:
+`ls`
 
-```bash
-ls
-```
+Output:
 
-The output was:
+`inhere`
 
-```text
-inhere
-```
+I entered the directory:
 
-So I found a directory called `inhere`.
+`cd inhere`
 
-## Step 2 — Entering the directory
+Then I checked for hidden files:
 
-I moved into the `inhere` directory:
+`ls -a`
 
-```bash
-cd inhere
-```
+Output:
 
-My prompt changed to:
+`.  ..  ...Hiding-From-You`
 
-```text
-bandit3@bandit:~/inhere$
-```
+I found the hidden file `...Hiding-From-You`.
 
-This confirmed that I was now inside the `inhere` directory.
+I read it:
 
-## Step 3 — Looking for hidden files
+`cat ...Hiding-From-You`
 
-I used:
+Output:
 
-```bash
-ls -a
-```
+`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
-The `-a` option is important here because it shows **all files**, including hidden files.
+Then I exited:
 
-The output was:
-
-```text
-.  ..  ...Hiding-From-You
-```
-
-I noticed a file named:
-
-```text
-...Hiding-From-You
-```
-
-The filename starts with three dots, so it wasn't shown when I used the normal `ls` command.
-
-## Step 4 — Reading the hidden file
-
-I used `cat` followed by the exact filename:
-
-```bash
-cat ...Hiding-From-You
-```
-
-The actual output from my terminal was:
-
-```text
-xZTXq1rDJQWVAzdv5Chq1TQytTwuAMq
-```
-
-This was the password for the next level, `bandit4`.
-
-## Password
-
-```text
-xZTXq1rDJQWVAzdv5Chq1TQytTwuAMq
-```
+`exit`
 
 ## Commands Used
 
-```bash
-ls
-cd inhere
-ls -a
-cat ...Hiding-From-You
-```
+`ls`  
+`cd inhere`  
+`ls -a`  
+`cat ...Hiding-From-You`  
+`exit`
 
 ## What I Learned
 
-The main thing I learned from this level was how to find hidden files in Linux.
-
-Using:
-
-```bash
-ls
-```
-
-only showed the normal directory contents.
-
-Using:
-
-```bash
-ls -a
-```
-
-showed the hidden files as well.
-
-I also learned that a filename can start with multiple dots, and I need to use the exact filename when reading it.
+- `ls -a` shows hidden files.
+- Files starting with `.` are hidden in Linux.
 
 ## Result
 
-**Bandit Level 3 → Level 4 completed ✅**
+Bandit Level 3 → Level 4 completed.
