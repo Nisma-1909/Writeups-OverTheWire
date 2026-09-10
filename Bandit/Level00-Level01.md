@@ -8,7 +8,7 @@ Login to Bandit Level 0 and find the password for Level 1.
 
 I connected to the Bandit server using SSH:
 
-```bash
+```
 ssh bandit0@bandit.labs.overthewire.org -p 2220
 ```
 
