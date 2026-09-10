@@ -2,120 +2,50 @@
 
 ## Challenge
 
-In this level, the password is stored in `data.txt`, but it is encoded using Base64.
+The password is stored in a Base64 encoded file.
 
-So the first thing I needed to figure out was what type of data was inside the file and then decode it.
+## Solution
 
-## Step 1 — Connecting to the server
+I checked the files:
 
-I connected as `bandit10` using SSH:
+`ls`
 
-```bash
-ssh bandit10@bandit.labs.overthewire.org -p 2220
-```
+Output:
 
-After entering the password from the previous level, I successfully logged in.
+`data.txt`
 
-## Step 2 — Checking the directory
+I checked the file type:
 
-I used:
+`file data.txt`
 
-```bash
-ls
-```
+Output:
 
-The output was:
+`data.txt: ASCII text`
 
-```text
-data.txt
-```
+I decoded the file using Base64:
 
-So `data.txt` was the file I needed to investigate.
+`base64 -d data.txt`
 
-## Step 3 — Checking the file type
+Output:
 
-I used the `file` command:
+`The password is xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
-```bash
-file data.txt
-```
+Then I exited:
 
-The output was:
-
-```text
-data.txt: ASCII text
-```
-
-This showed that the file contained normal text rather than binary data.
-
-## Step 4 — Decoding the contents
-
-The challenge involved Base64 encoding, so I used the `base64` command with the `-d` option.
-
-```bash
-base64 -d data.txt
-```
-
-The output was:
-
-```text
-The password is pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro
-```
-
-The password was:
-
-```text
-pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro
-```
-
-This was the password for the next level, `bandit11`.
-
-## Step 5 — Exiting
-
-After getting the password, I exited the server:
-
-```bash
-exit
-```
-
-The connection was closed:
-
-```text
-logout
-Connection to bandit.labs.overthewire.org closed.
-```
-
-## Password
-
-```text
-pYfOY6HwUsDj5rL9UvyhU7MCmv8vN5Ro
-```
+`exit`
 
 ## Commands Used
 
-```bash
-ls
-file data.txt
-base64 -d data.txt
-exit
-```
+`ls`  
+`file data.txt`  
+`base64 -d data.txt`  
+`exit`
 
 ## What I Learned
 
-This level introduced Base64 decoding.
-
-Base64 is a way of representing binary data using printable characters. It is an **encoding**, not encryption, so it can be decoded when the correct encoding is known.
-
-I used:
-
-```bash
-base64 -d data.txt
-```
-
-The `-d` option tells the `base64` command to decode the input.
-
-The decoded output directly revealed the password.
+- `base64 -d` decodes Base64 data.
+- `file` can be used to check the type of a file.
 
 ## Result
 
-**Bandit Level 10 → Level 11 completed ✅**
+Bandit Level 10 → Level 11 completed.
